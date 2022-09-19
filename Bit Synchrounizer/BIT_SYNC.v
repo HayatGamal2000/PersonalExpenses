@@ -24,10 +24,14 @@ begin
       for(i=0;i<BUS_WIDTH;i=i+1)
       begin
         Stages[i][0] <= ASYNC[i];
-        {SYNC[i],Stages[i][NUM_STAGES-1:1]}<= Stages[i];
+        Stages[i][NUM_STAGES-1:1]<= Stages[i];
         end
       end   
 end
-
+always @(*)
+ begin
+  for (i=0; i<BUS_WIDTH; i=i+1)
+    SYNC[i] = Stages[i][NUM_STAGES-1] ; 
+ end  
 endmodule
 
