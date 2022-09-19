@@ -16,7 +16,11 @@ begin
     else
       begin
         Stages[0] <= 1'b1;
-        {SYNC_RST,Stages[NUM_STAGES-1:1]}<= Stages;
+        Stages[NUM_STAGES-1:1]<= Stages;
         end
 end
+  always @(*)
+ begin
+    SYNC_RST = Stages[NUM_STAGES-1] ; 
+ end 
 endmodule
