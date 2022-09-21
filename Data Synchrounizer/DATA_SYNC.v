@@ -17,7 +17,7 @@ reg  [DATA_WIDTH-1:0] Pulse_Gen_Out;
 reg  [DATA_WIDTH-1:0] Mux_Out;
 wire [DATA_WIDTH-1:0] enable_data;
 
-assign enable_data={16{bus_enable}};
+assign enable_data={DATA_WIDTH{bus_enable}};
 
 always @(*)
 begin
